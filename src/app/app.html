@@ -1,0 +1,477 @@
+<div class="portfolio-wrapper">
+  <!-- Top Navigation Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#hero" class="brand" (click)="$event.preventDefault(); scrollTo('hero')">
+        <span class="brand-code">&lt;SK /&gt;</span>
+        <span class="brand-name">Shivakumar</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="desktop-nav">
+        <a [class.active]="activeSection() === 'hero'" (click)="scrollTo('hero')">Home</a>
+        <a [class.active]="activeSection() === 'skills'" (click)="scrollTo('skills')">Skills</a>
+        <a [class.active]="activeSection() === 'experience'" (click)="scrollTo('experience')">Experience</a>
+        <a [class.active]="activeSection() === 'projects'" (click)="scrollTo('projects')">Projects</a>
+        <a [class.active]="activeSection() === 'achievements'" (click)="scrollTo('achievements')">Awards</a>
+        <a [class.active]="activeSection() === 'contact'" (click)="scrollTo('contact')" class="nav-contact-btn">Get In Touch</a>
+      </nav>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button 
+        class="mobile-menu-btn" 
+        (click)="toggleMobileMenu()" 
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-label="Toggle Navigation Menu">
+        <i class="bi" [class.bi-list]="!mobileMenuOpen()" [class.bi-x-lg]="mobileMenuOpen()"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Overlay Menu -->
+    <div class="mobile-drawer" [class.open]="mobileMenuOpen()">
+      <div class="drawer-header">
+        <span class="brand-code">&lt;SK /&gt;</span>
+        <button class="drawer-close-btn" (click)="closeMobileMenu()" aria-label="Close menu">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a (click)="scrollTo('hero')" [class.active]="activeSection() === 'hero'">
+          <i class="bi bi-house-door"></i> Home
+        </a>
+        <a (click)="scrollTo('skills')" [class.active]="activeSection() === 'skills'">
+          <i class="bi bi-code-slash"></i> Technical Skills
+        </a>
+        <a (click)="scrollTo('experience')" [class.active]="activeSection() === 'experience'">
+          <i class="bi bi-briefcase"></i> Experience
+        </a>
+        <a (click)="scrollTo('projects')" [class.active]="activeSection() === 'projects'">
+          <i class="bi bi-layers"></i> Projects
+        </a>
+        <a (click)="scrollTo('achievements')" [class.active]="activeSection() === 'achievements'">
+          <i class="bi bi-trophy"></i> Awards & Impact
+        </a>
+        <a (click)="scrollTo('contact')" class="mobile-contact-pill">
+          <i class="bi bi-envelope"></i> Contact Shivakumar
+        </a>
+      </nav>
+
+      <div class="drawer-footer">
+        <div class="drawer-socials">
+          <a [href]="linkedin" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a [href]="'mailto:' + email">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+          <a [href]="'tel:' + phone">
+            <i class="bi bi-telephone-fill"></i>
+          </a>
+        </div>
+        <p class="drawer-location"><i class="bi bi-geo-alt"></i> {{ location }}</p>
+      </div>
+    </div>
+    <!-- Backdrop overlay -->
+    <div class="mobile-backdrop" *ngIf="mobileMenuOpen()" (click)="closeMobileMenu()"></div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span>Available for Full Stack Opportunities</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">{{ name }}</span>
+          </h1>
+          <h2 class="hero-subtitle">
+            <span class="role-badge">{{ title }}</span>
+            <span class="role-stack">Angular &amp; ASP.NET Core Specialist</span>
+          </h2>
+
+          <p class="hero-description">
+            {{ summary }}
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" (click)="scrollTo('projects')">
+              <i class="bi bi-grid-fill"></i> View Projects
+            </button>
+            <button class="btn btn-secondary" (click)="scrollTo('contact')">
+              <i class="bi bi-send-fill"></i> Contact Me
+            </button>
+            <a [href]="'mailto:' + email" class="btn btn-outline" title="Send email">
+              <i class="bi bi-envelope-check"></i> Email Resume
+            </a>
+          </div>
+
+          <div class="hero-quick-info">
+            <div class="info-item">
+              <i class="bi bi-geo-alt-fill text-accent"></i>
+              <span>{{ location }}</span>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-envelope-fill text-accent"></i>
+              <span>{{ email }}</span>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-telephone-fill text-accent"></i>
+              <span>{{ phone }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card-col">
+          <div class="code-terminal-card">
+            <div class="terminal-bar">
+              <div class="dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-title">shivakumar.profile.ts</span>
+            </div>
+            <div class="terminal-body">
+              <pre><code><span class="token-keyword">const</span> <span class="token-var">developer</span> = &#123;
+  <span class="token-key">name</span>: <span class="token-string">'Shivakumar Kancharla'</span>,
+  <span class="token-key">role</span>: <span class="token-string">'Full Stack Software Engineer'</span>,
+  <span class="token-key">experience</span>: <span class="token-string">'3+ Years'</span>,
+  <span class="token-key">primaryFrontend</span>: <span class="token-string">'Angular (v14-v17), TypeScript, RxJS'</span>,
+  <span class="token-key">primaryBackend</span>: <span class="token-string">'C#, ASP.NET Core, Minimal APIs'</span>,
+  <span class="token-key">database</span>: <span class="token-string">'PostgreSQL, Dapper, Redis'</span>,
+  <span class="token-key">security</span>: [<span class="token-string">'JWT (RS256)'</span>, <span class="token-string">'RBAC'</span>, <span class="token-string">'RLS'</span>],
+  <span class="token-key">architecture</span>: <span class="token-string">'Clean Architecture & SOLID'</span>,
+  <span class="token-key">status</span>: <span class="token-string">'Open to High-Impact Roles'</span>
+&#125;;</code></pre>
+            </div>
+          </div>
+
+          <!-- Highlight Metric Badges -->
+          <div class="metrics-grid">
+            <div class="metric-card" *ngFor="let metric of metrics">
+              <div class="metric-value">{{ metric.value }}</div>
+              <div class="metric-label">{{ metric.label }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="skills-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Capabilities</span>
+          <h2 class="section-title">Technical Skillset</h2>
+          <p class="section-sub">
+            Engineered with modern full-stack practices, enterprise scalability, and database optimization.
+          </p>
+        </div>
+
+        <!-- Filter category tabs for quick navigation -->
+        <div class="skills-tabs">
+          <button 
+            class="tab-btn" 
+            [class.active]="activeSkillTab() === 'All'" 
+            (click)="filterSkills('All')">
+            All Domains
+          </button>
+          <button 
+            class="tab-btn" 
+            [class.active]="activeSkillTab() === 'Frontend'" 
+            (click)="filterSkills('Frontend')">
+            <i class="bi bi-window"></i> Frontend
+          </button>
+          <button 
+            class="tab-btn" 
+            [class.active]="activeSkillTab() === 'Backend'" 
+            (click)="filterSkills('Backend')">
+            <i class="bi bi-cpu"></i> Backend (.NET)
+          </button>
+          <button 
+            class="tab-btn" 
+            [class.active]="activeSkillTab() === 'Database'" 
+            (click)="filterSkills('Database')">
+            <i class="bi bi-database"></i> Database
+          </button>
+          <button 
+            class="tab-btn" 
+            [class.active]="activeSkillTab() === 'Security'" 
+            (click)="filterSkills('Security')">
+            <i class="bi bi-shield-check"></i> Security & Architecture
+          </button>
+        </div>
+
+        <div class="skills-card-grid">
+          <div class="skill-category-card" *ngFor="let cat of displayedSkillCategories">
+            <div class="cat-header">
+              <div class="cat-icon-box">
+                <i class="bi" [ngClass]="cat.icon"></i>
+              </div>
+              <h3 class="cat-title">{{ cat.name }}</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag" *ngFor="let skill of cat.skills">
+                {{ skill }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE SECTION -->
+    <section id="experience" class="experience-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Career Journey</span>
+          <h2 class="section-title">Work Experience</h2>
+          <p class="section-sub">
+            Demonstrated track record in building high-throughput enterprise systems, payment integrations, and front-end performance upgrades.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item" *ngFor="let exp of experiences">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-line"></div>
+            </div>
+
+            <div class="timeline-content card">
+              <div class="exp-header">
+                <div>
+                  <h3 class="exp-role">{{ exp.role }}</h3>
+                  <div class="exp-company-info">
+                    <span class="exp-company">
+                      <strong>{{ exp.company }}</strong>
+                      <span *ngIf="exp.client"> &ndash; {{ exp.client }}</span>
+                    </span>
+                    <span class="exp-location">
+                      <i class="bi bi-geo-alt"></i> {{ exp.location }}
+                    </span>
+                  </div>
+                </div>
+                <div class="exp-period">
+                  <i class="bi bi-calendar3"></i> {{ exp.period }}
+                </div>
+              </div>
+
+              <div class="exp-tech-chips">
+                <span class="chip" *ngFor="let tech of exp.skills">{{ tech }}</span>
+              </div>
+
+              <ul class="exp-bullets">
+                <li *ngFor="let pt of exp.points">
+                  <i class="bi bi-check2-circle bullet-icon"></i>
+                  <span>{{ pt }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT EXPERIENCE SECTION -->
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Featured Works</span>
+          <h2 class="section-title">Project Highlights</h2>
+          <p class="section-sub">
+            Real-world enterprise applications, low-code engines, AI assistants, and recruitment platforms.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <div class="project-card" *ngFor="let proj of projects">
+            <div class="project-top">
+              <div class="project-icon-wrapper">
+                <i class="bi" [ngClass]="proj.icon"></i>
+              </div>
+              <span class="project-tag">{{ proj.tag }}</span>
+            </div>
+
+            <h3 class="project-title">{{ proj.title }}</h3>
+            <div class="project-subtitle">{{ proj.subtitle }} &bull; <span class="role-highlight">{{ proj.role }}</span></div>
+
+            <p class="project-desc">{{ proj.description }}</p>
+
+            <div class="project-highlights">
+              <h4>Key Contributions:</h4>
+              <ul>
+                <li *ngFor="let h of proj.highlights">
+                  <i class="bi bi-arrow-right-short"></i>
+                  <span>{{ h }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <div class="tech-stack-pills">
+                <span class="stack-pill" *ngFor="let t of proj.techStack">{{ t }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS & LEADERSHIP SECTION -->
+    <section id="achievements" class="achievements-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Recognition &amp; Impact</span>
+          <h2 class="section-title">Key Achievements &amp; Leadership</h2>
+          <p class="section-sub">
+            Awards, measurable business impacts, and mentorship contributions.
+          </p>
+        </div>
+
+        <div class="achievements-grid">
+          <div class="achievement-card" *ngFor="let ach of achievements">
+            <div class="ach-icon-box">
+              <i class="bi" [ngClass]="ach.icon"></i>
+            </div>
+            <div class="ach-info">
+              <h3 class="ach-title">{{ ach.title }}</h3>
+              <p class="ach-desc">{{ ach.desc }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leadership and Education side by side -->
+        <div class="extra-info-grid">
+          <div class="card leadership-card">
+            <div class="card-title-group">
+              <i class="bi bi-people-fill card-icon"></i>
+              <h3>Leadership &amp; Collaboration</h3>
+            </div>
+            <div class="leadership-list">
+              <div class="leader-item" *ngFor="let item of leadership">
+                <h4><i class="bi bi-chevron-right text-primary"></i> {{ item.title }}</h4>
+                <p>{{ item.desc }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card education-card">
+            <div class="card-title-group">
+              <i class="bi bi-mortarboard-fill card-icon"></i>
+              <h3>Education</h3>
+            </div>
+            <div class="education-content">
+              <div class="edu-badge">Graduated {{ education.year }}</div>
+              <h4 class="edu-degree">{{ education.degree }}</h4>
+              <p class="edu-college"><i class="bi bi-building"></i> {{ education.college }}</p>
+              <div class="edu-tags">
+                <span>Engineering Graduate</span>
+                <span>Foundation in Systems &amp; Computing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / FOOTER SECTION -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-header">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="contact-title">Let's Build Scalable Software Together</h2>
+            <p class="contact-desc">
+              Whether you are looking for an experienced Full Stack Engineer for Angular, ASP.NET Core, or PostgreSQL performance tuning — my inbox is always open.
+            </p>
+          </div>
+
+          <div class="contact-channels">
+            <div class="channel-card">
+              <div class="channel-icon">
+                <i class="bi bi-envelope-at-fill"></i>
+              </div>
+              <div class="channel-details">
+                <span class="label">Email Address</span>
+                <span class="val">{{ email }}</span>
+              </div>
+              <button 
+                class="copy-btn" 
+                (click)="copyToClipboard(email, 'email')"
+                [title]="'Copy Email'">
+                <i class="bi" [class.bi-clipboard]="copiedContact() !== 'email'" [class.bi-check-lg]="copiedContact() === 'email'"></i>
+                <span>{{ copiedContact() === 'email' ? 'Copied' : 'Copy' }}</span>
+              </button>
+            </div>
+
+            <div class="channel-card">
+              <div class="channel-icon">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div class="channel-details">
+                <span class="label">Phone / WhatsApp</span>
+                <span class="val">{{ phone }}</span>
+              </div>
+              <button 
+                class="copy-btn" 
+                (click)="copyToClipboard(phone, 'phone')"
+                [title]="'Copy Phone Number'">
+                <i class="bi" [class.bi-clipboard]="copiedContact() !== 'phone'" [class.bi-check-lg]="copiedContact() === 'phone'"></i>
+                <span>{{ copiedContact() === 'phone' ? 'Copied' : 'Copy' }}</span>
+              </button>
+            </div>
+
+            <div class="channel-card">
+              <div class="channel-icon">
+                <i class="bi bi-linkedin"></i>
+              </div>
+              <div class="channel-details">
+                <span class="label">LinkedIn Profile</span>
+                <span class="val">Shivakumar Kancharla</span>
+              </div>
+              <a [href]="linkedin" target="_blank" rel="noopener noreferrer" class="link-btn">
+                <span>View</span>
+                <i class="bi bi-arrow-up-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-direct-actions">
+            <a [href]="'mailto:' + email + '?subject=Opportunity%20Inquiry%20-%20Shivakumar%20Kancharla'" class="btn btn-primary btn-large">
+              <i class="bi bi-envelope-arrow-up-fill"></i> Send Direct Email
+            </a>
+            <a [href]="'tel:' + phone" class="btn btn-secondary btn-large">
+              <i class="bi bi-telephone-outbound-fill"></i> Call Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span class="brand-code">&lt;SK /&gt;</span>
+        <p>&copy; 2026 Shivakumar Kancharla. Crafted with Angular &amp; SCSS.</p>
+      </div>
+      <div class="footer-right">
+        <a [href]="linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a [href]="'mailto:' + email" aria-label="Send Email">
+          <i class="bi bi-envelope-fill"></i>
+        </a>
+        <button class="back-to-top" (click)="scrollTo('hero')" aria-label="Back to top">
+          <i class="bi bi-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+</div>
